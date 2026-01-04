@@ -99,6 +99,11 @@ summary {
     align-items: center;
 }
 
+.education-details summary {
+    display: block;
+    justify-content: initial;
+}
+
 summary::-webkit-details-marker {
     display: none;
 }
@@ -125,7 +130,8 @@ details[open] summary::before {
 
 details p {
     margin-top: 10px;
-    margin-left: 20px;
+    margin-left: 0;
+    text-align: left;
 }
 
 summary .project-link {
