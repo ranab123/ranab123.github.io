@@ -74,7 +74,7 @@ p {
 }
 
 a {
-    color: #000;
+    color: blue;
     text-decoration: underline;
 }
 
@@ -135,7 +135,7 @@ details p {
 }
 
 summary .project-link {
-    color: #000;
+    color: blue;
     text-decoration: underline;
 }
 
