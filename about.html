@@ -6,8 +6,419 @@
     <title>About - rana land</title>
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        @font-face {
+            font-family: 'AlteHaasGroteskBold';
+            src: url('assets/fonts/AlteHaasGroteskBold.ttf') format('truetype');
+        }
+        
+        @font-face {
+            font-family: 'AlteHaasGroteskRegular';
+            src: url('assets/fonts/AlteHaasGroteskRegular.ttf') format('truetype');
+        }
+        
+        body.about-page {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+        
+        .about-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        .about-bg img {
+            position: absolute;
+            min-width: 100%;
+            min-height: 100%;
+        }
+        
+        body.about-page .navbar {
+            background-color: transparent;
+            position: relative;
+            z-index: 1;
+        }
+        
+        body.about-page .nav-item {
+            color: #000;
+        }
+        
+        .about-content {
+            position: relative;
+            width: 100%;
+            height: calc(100vh - 113px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+        
+        .about-text-left {
+            position: absolute;
+            left: 15vw;
+            top: 60px;
+        }
+        
+        .about-text-right {
+            position: absolute;
+            right: 15vw;
+            top: 60px;
+            text-align: right;
+        }
+        
+        .yellow-text {
+            font-family: 'AlteHaasGroteskBold', sans-serif;
+            font-size: 20px;
+            color: #D7B355;
+            line-height: 1.1;
+            text-align: left;
+        }
+        
+        .red-text-left {
+            font-family: 'AlteHaasGroteskBold', sans-serif;
+            font-size: 20px;
+            color: #D7B355;
+            line-height: 1.1;
+            text-align: left;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .about-text-center {
+            position: absolute;
+            left: 50%;
+            top: 38%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .red-text {
+            font-family: 'AlteHaasGroteskBold', sans-serif;
+            font-size: 20px;
+            color: #C15623;
+            line-height: 1;
+            text-align: center;
+            white-space: nowrap;
+        }
+        
+        .red-text-plus {
+            font-family: 'AlteHaasGroteskBold', sans-serif;
+            font-size: 20px;
+            color: #D7B355;
+            line-height: 1.1;
+            text-align: right;
+            margin: 0;
+            padding: 0;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .red-text-plus .hover-text {
+            display: none;
+        }
+        
+        .red-text-plus .plus-symbol {
+            display: inline;
+        }
+        
+        .red-text-plus:hover .plus-symbol {
+            display: none;
+        }
+        
+        .red-text-plus:hover .hover-text {
+            display: inline;
+        }
+        
+        .content-section {
+            position: fixed;
+            left: 15vw;
+            right: 15vw;
+            bottom: 40px;
+            z-index: 5;
+        }
+        
+        .content-columns {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: 1fr;
+            gap: 40px;
+            color: #D7B355;
+            font-family: 'AlteHaasGroteskRegular', sans-serif;
+            font-size: 16px;
+            line-height: 1.4;
+        }
+        
+        .content-columns strong {
+            font-family: 'AlteHaasGroteskBold', sans-serif;
+            font-weight: normal;
+        }
+        
+        .content-column {
+            text-align: justify;
+            display: flex;
+            flex-direction: column;
+            min-height: 100%;
+        }
+        
+        .content-column p {
+            margin: 0;
+        }
+        
+        .content-column .column-content {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .content-column .bottom-text {
+            margin-top: auto;
+        }
+        
+        .education-tabs {
+            display: flex;
+            justify-content: flex-end;
+            gap: 40px;
+            margin-bottom: 15px;
+        }
+        
+        .education-tab-left {
+            text-align: left;
+        }
+        
+        .education-tab-right {
+            text-align: right;
+        }
+        
+        .education-tab-button {
+            font-family: 'AlteHaasGroteskBold', sans-serif;
+            font-size: 20px;
+            color: #D7B355;
+            cursor: pointer;
+            display: inline-block;
+        }
+        
+        .education-tab-button.active {
+            text-decoration: underline;
+        }
+        
+        
+        .education-content-wrapper {
+            width: 100%;
+        }
+        
+        .education-tab-content {
+            color: #D7B355;
+            font-family: 'AlteHaasGroteskRegular', sans-serif;
+            font-size: 16px;
+            line-height: 1.2;
+            text-align: justify;
+        }
+        
+        #informal-content p {
+            text-align: justify;
+        }
+
+        /* FORMAL education should be size 20 */
+        #formal-content.education-tab-content {
+            font-size: 20px;
+        }
+
+        .stanford-dropdown {
+            margin: 0;
+        }
+
+        .stanford-dropdown summary {
+            cursor: pointer;
+            list-style: none;
+            display: inline-block;
+        }
+        
+        .stanford-dropdown summary::before {
+            content: "▶ ";
+            display: inline-block;
+            margin-right: 5px;
+        }
+        
+        .stanford-dropdown[open] summary::before {
+            content: "▼ ";
+        }
+
+        .stanford-dropdown summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .stanford-dropdown summary strong {
+            font-family: 'AlteHaasGroteskBold', sans-serif;
+            font-weight: normal;
+        }
+
+        .stanford-dropdown-content {
+            margin-top: 5px;
+            font-size: 16px;
+        }
+        
+        .stanford-dropdown-content p {
+            font-size: 16px;
+        }
+        
+        .education-tab-content p {
+            margin: 0 0 5px 0;
+        }
+        
+        .education-tab-content p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .education-tab-content strong {
+            font-family: 'AlteHaasGroteskBold', sans-serif;
+            font-weight: normal;
+        }
+        
+        .hobbies-text {
+            color: #D7B355;
+            font-family: 'AlteHaasGroteskBold', sans-serif;
+            font-size: 20px;
+            line-height: 1.4;
+            text-align: left;
+            margin: 0;
+            max-width: 50%;
+        }
+        
+        .hobbies-text .underlined {
+            text-decoration: underline;
+        }
+        
+        .hobby-trigger {
+            cursor: pointer;
+        }
+        
+        .hobby-link {
+            color: inherit;
+            text-decoration: underline;
+        }
+        
+        .hobby-link:hover {
+            opacity: 0.8;
+        }
+        
+        #hobbies[style*="flex"] {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 40px;
+        }
+        
+        .hobby-images {
+            flex-shrink: 0;
+            max-width: 300px;
+            align-self: flex-end;
+        }
+        
+        .hobby-image {
+            display: none;
+            width: 100%;
+            height: auto;
+        }
+        
+        .hobby-image.active {
+            display: block;
+        }
+
+        .reach-me-section {
+            right: auto;
+            max-width: 50%;
+        }
+
+        .reach-me-links {
+            display: flex;
+            flex-direction: column;
+            font-family: 'AlteHaasGroteskBold', sans-serif;
+            font-size: 20px;
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+
+        .reach-me-links a {
+            color: #D7B355;
+            text-decoration: none;
+        }
+
+        .reach-me-links a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .yellow-text {
+                font-size: 12px;
+            }
+            
+            .red-text {
+                font-size: 12px;
+            }
+            
+            .red-text-plus {
+                font-size: 12px;
+            }
+            
+            .red-text-left {
+                font-size: 12px;
+            }
+            
+            .about-text-left {
+                left: 5vw;
+            }
+            
+            .about-text-right {
+                right: 5vw;
+            }
+            
+            .content-section {
+                left: 5vw;
+                right: 5vw;
+            }
+            
+            .content-columns {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                font-size: 16px;
+            }
+            
+            
+            .education-tab-button {
+                font-size: 16px;
+            }
+            
+            .education-tab-content {
+                font-size: 12px;
+                line-height: 1.2;
+            }
+            
+            .hobbies-text {
+                font-size: 16px;
+                max-width: 100%;
+            }
+            
+            #hobbies[style*="flex"] {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .hobby-images {
+                display: none;
+            }
+        }
+    </style>
 </head>
-<body>
+<body class="about-page">
+    <div class="about-bg">
+        <img src="assets/images/about-me-background.JPG" alt="Background" id="bgImage">
+    </div>
     <nav class="navbar">
         <div class="nav-logo">
             <a href="index.html">
@@ -19,6 +430,254 @@
             <a href="about.html" class="nav-item">ABOUT</a>
         </div>
     </nav>
+    
+    <div class="about-content">
+        <div class="about-text-left">
+            <div class="red-text-left">COMPUTER SCIENCE</div>
+            <div class="red-text-left">&DESIGN</div>
+            <div class="red-text-left">AT STANFORD</div>
+        </div>
+        <div class="about-text-center">
+            <div class="red-text">RANA BANANKHAH</div>
+        </div>
+        <div class="about-text-right">
+            <div class="red-text-plus" data-section="life-goals">
+                <span class="plus-symbol">+</span>
+                <span class="hover-text">LIFE GOALS</span>
+            </div>
+            <div class="red-text-plus" data-section="education">
+                <span class="plus-symbol">+</span>
+                <span class="hover-text">EDUCATION</span>
+            </div>
+            <div class="red-text-plus" data-section="hobbies">
+                <span class="plus-symbol">+</span>
+                <span class="hover-text">HOBBIES</span>
+            </div>
+            <div class="red-text-plus" data-section="reach-me">
+                <span class="plus-symbol">+</span>
+                <span class="hover-text">REACH ME</span>
+            </div>
+        </div>
+        
+        <!-- Content Sections -->
+        <div id="life-goals" class="content-section" style="display: none;">
+            <div class="content-columns">
+                <div class="content-column">
+                    <p><strong>LIVE FULLY.</strong> Cram as much as I can into this one, precious life I have. Live 10 lives in one.</p>
+                </div>
+                <div class="content-column">
+                    <p><strong>EXPLORE AS MUCH AS POSSIBLE.</strong> Physical exploration (traveling, entering rooms I'm not supposed to be in) and conceptual exploration (learning new things, meeting new people).</p>
+                </div>
+                <div class="content-column">
+                    <div class="column-content">
+                        <p><strong>LIVE FREELY.</strong> Financial freedom. Physical freedom. Freedom from social pressures.</p>
+                        <p class="bottom-text"><strong>LAUGH.</strong> A lot.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="education" class="content-section" style="display: none;">
+            <div class="education-tabs">
+                <div class="education-tab-left">
+                    <span class="education-tab-button active" data-tab="formal">FORMAL</span>
+                </div>
+                <div class="education-tab-right">
+                    <span class="education-tab-button" data-tab="informal">INFORMAL</span>
+                </div>
+            </div>
+            <div class="education-content-wrapper">
+                <div id="formal-content" class="education-tab-content active">
+                    <p><strong>Modesto High School: IB Diploma</strong> 2018-2022</p>
+                    <details class="stanford-dropdown">
+                        <summary><strong>Stanford University: B.S. Computer Science and Product Design</strong> 2022-2026</summary>
+                        <div class="stanford-dropdown-content">
+                            <p>I followed my curiosity in college and, as a result, have taken an wild amalgamation of courses from different disciplines:</p>
+                            <p>Behavior Design [BJ Fogg], The Business of Venture Capital [Scott Kupor], Making Sense of Strategy [David Demarest], Things About Stuff [Tom Lee], Healthcare Venture Capital [Ronjon Nag, Michael Snyder], Real Estate Development and Finance [Nelson Koen], Graduate Design Research Techniques [Michael Barry], Beginning Improvising [Lisa Rowland], Business Design [Omar Siddiqui], Visual Frontiers [Zio Ziegler, Patrick Fenton], Entrepreneurship, Lessons from the Trenches [Parth Bhakta, Divya Gupta], Social Computing [Michael Bernstein], Operations Management [Irene Lo], Psychology of Stoked [Shashank Joshi, Daryn Reicherter], The Chinese Economy [Scott Rozelle]</p>
+                        </div>
+                    </details>
+                </div>
+                <div id="informal-content" class="education-tab-content" style="display: none;">
+                    <p><strong>Cold calling 10,000 people</strong> on a congressional campaign in a swing district taught me more than anything else could about sales.<br>
+                    <strong>My gap quarter</strong> working at Bandana taught me to always think about distribution first, and to use the 80/20 principle to move fast.<br>
+                    <strong>Working at Bump</strong> taught me to sweat over the details, because they make a difference whether you recognize it or not.<br>
+                    <strong>Vipassana</strong> (a 10-day silent meditation retreat) taught me to control my mind (and was where I realized I wanted to study Computer Science).<br>
+                    <strong>WWOOFing over winter break</strong> taught me how to milk a goat.<br>
+                    <strong>DJing</strong> has taught me the utter joy you feel when you create something people LOVE.<br>
+                    <strong>Serving as a California state policy official at 17</strong> taught me the importance of well-calibrated incentive structures… and how to parse through 300 page agendas.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div id="hobbies" class="content-section" style="display: none;">
+            <p class="hobbies-text">In my free time, I like working on <a href="projects.html" class="underlined hobby-trigger hobby-link" data-image="building">side projects</a>, <a href="https://www.ultimate-guitar.com/u/froggiewrld" target="_blank" class="underlined hobby-trigger hobby-link" data-image="guitar">playing guitar</a>, <span class="underlined hobby-trigger" data-image="dj">DJing</span>, and <span class="underlined hobby-trigger" data-image="skating">skateboarding</span>.</p>
+            <div class="hobby-images">
+                <img src="assets/images/rana-building.png" alt="Building" class="hobby-image" id="image-building">
+                <img src="assets/images/rana-guitar.png" alt="Guitar" class="hobby-image" id="image-guitar">
+                <img src="assets/images/rana-dj.png" alt="DJing" class="hobby-image" id="image-dj">
+                <img src="assets/images/rana-skating.png" alt="Skating" class="hobby-image" id="image-skating">
+            </div>
+        </div>
+
+        <div id="reach-me" class="content-section reach-me-section" style="display: none;">
+            <div class="reach-me-links">
+                <a href="https://x.com/ranabanankhah" target="_blank" rel="noopener noreferrer">TWITTER</a>
+                <a href="https://www.linkedin.com/in/rana-banankhah/" target="_blank" rel="noopener noreferrer">LINKEDIN</a>
+                <a href="https://www.goodreads.com/review/list/169825586?shelf=read" target="_blank" rel="noopener noreferrer">GOODREADS</a>
+                <a href="mailto:ranab@stanford.edu">EMAIL</a>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Focus point coordinates in the original image
+        const FOCUS_X = 1728;
+        const FOCUS_Y = 906;
+        const IMG_WIDTH = 2722;
+        const IMG_HEIGHT = 1535;
+        
+        function positionImage() {
+            const img = document.getElementById('bgImage');
+            if (!img) return;
+            
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+            
+            // Calculate base scale to cover viewport
+            const scaleX = viewportWidth / IMG_WIDTH;
+            const scaleY = viewportHeight / IMG_HEIGHT;
+            let scale = Math.max(scaleX, scaleY);
+            
+            // Calculate how much extra scale we need to allow centering the focus point
+            // Focus point distance from center of image
+            const focusOffsetX = FOCUS_X - (IMG_WIDTH / 2);
+            const focusOffsetY = FOCUS_Y - (IMG_HEIGHT / 2);
+            
+            // We need enough image width/height so focus point can be at viewport center
+            // Required scaled width = viewportWidth + 2 * abs(focusOffsetX * scale)
+            const requiredScaleX = viewportWidth / (IMG_WIDTH - 2 * Math.abs(focusOffsetX));
+            const requiredScaleY = viewportHeight / (IMG_HEIGHT - 2 * Math.abs(focusOffsetY));
+            
+            scale = Math.max(scale, requiredScaleX, requiredScaleY);
+            
+            // Scaled image dimensions
+            const scaledWidth = IMG_WIDTH * scale;
+            const scaledHeight = IMG_HEIGHT * scale;
+            
+            // Focus point position in scaled image
+            const scaledFocusX = FOCUS_X * scale;
+            const scaledFocusY = FOCUS_Y * scale;
+            
+            // Calculate offset to center focus point in viewport
+            const offsetX = (viewportWidth / 2) - scaledFocusX;
+            const offsetY = (viewportHeight / 2) - scaledFocusY + 100; // Shift up by 100px to show more of the top
+            
+            img.style.width = scaledWidth + 'px';
+            img.style.height = scaledHeight + 'px';
+            img.style.left = offsetX + 'px';
+            img.style.top = offsetY + 'px';
+        }
+        
+        // Wait for the image to load before positioning
+        const img = document.getElementById('bgImage');
+        if (img.complete) {
+            positionImage();
+        } else {
+            img.addEventListener('load', positionImage);
+        }
+        
+        window.addEventListener('resize', positionImage);
+        window.addEventListener('load', positionImage);
+        
+        // Also run after a short delay to catch any edge cases
+        setTimeout(positionImage, 100);
+        
+        // Handle content section clicks
+        document.querySelectorAll('.red-text-plus').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                const section = this.getAttribute('data-section');
+                const contentSection = document.getElementById(section);
+                
+                // Hide all sections first
+                document.querySelectorAll('.content-section').forEach(sec => {
+                    sec.style.display = 'none';
+                });
+                
+                // Toggle the clicked section
+                if (contentSection) {
+                    if (contentSection.style.display === 'none' || contentSection.style.display === '') {
+                        // Use flex for hobbies, block for others
+                        if (section === 'hobbies') {
+                            contentSection.style.display = 'flex';
+                        } else {
+                            contentSection.style.display = 'block';
+                        }
+                        
+                        // If education section, reset to formal tab
+                        if (section === 'education') {
+                            // Reset to formal tab
+                            document.querySelectorAll('.education-tab-button').forEach(btn => {
+                                btn.classList.remove('active');
+                            });
+                            document.querySelectorAll('.education-tab-content').forEach(content => {
+                                content.style.display = 'none';
+                            });
+                            document.querySelector('.education-tab-button[data-tab="formal"]').classList.add('active');
+                            document.getElementById('formal-content').style.display = 'block';
+                        }
+                    } else {
+                        contentSection.style.display = 'none';
+                    }
+                }
+            });
+        });
+        
+        // Handle education tab switching
+        document.querySelectorAll('.education-tab-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const tabName = this.getAttribute('data-tab');
+                
+                // Remove active class from all tabs
+                document.querySelectorAll('.education-tab-button').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                // Hide all tab contents
+                document.querySelectorAll('.education-tab-content').forEach(content => {
+                    content.style.display = 'none';
+                });
+                
+                // Activate clicked tab
+                this.classList.add('active');
+                document.getElementById(tabName + '-content').style.display = 'block';
+            });
+        });
+        
+        // Handle hobby image hover
+        document.querySelectorAll('.hobby-trigger').forEach(trigger => {
+            trigger.addEventListener('mouseenter', function() {
+                const imageId = this.getAttribute('data-image');
+                const image = document.getElementById('image-' + imageId);
+                
+                // Hide all images
+                document.querySelectorAll('.hobby-image').forEach(img => {
+                    img.classList.remove('active');
+                });
+                
+                // Show the corresponding image
+                if (image) {
+                    image.classList.add('active');
+                }
+            });
+            
+            trigger.addEventListener('mouseleave', function() {
+                // Hide all images when mouse leaves
+                document.querySelectorAll('.hobby-image').forEach(img => {
+                    img.classList.remove('active');
+                });
+            });
+        });
+    </script>
 </body>
 </html>
-
