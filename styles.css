@@ -82,6 +82,96 @@ body {
     height: auto;
     display: block;
     object-fit: cover;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.image-grid img:hover {
+    opacity: 0.8;
+}
+
+/* Hover Preview */
+.hover-preview {
+    position: fixed;
+    width: 390px;
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+}
+
+.hover-preview.visible {
+    opacity: 1;
+}
+
+.hover-preview img,
+.hover-preview video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Gallery Grid for Projects Page */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: 20px;
+    row-gap: 20px;
+    padding: 20px 40px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.gallery-item {
+    width: 100%;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+.gallery-item img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+/* Videos with transparent backgrounds - no scaling needed */
+.gallery-item video {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+.gallery-info {
+    padding: 15px 5px 0 5px;
+    text-align: center;
+    width: 100%;
+}
+
+.gallery-title {
+    font-family: 'AlteHaasGroteskBold', Arial, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+.gallery-date {
+    font-family: 'AlteHaasGroteskBold', Arial, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+    text-transform: uppercase;
+    line-height: 1.2;
 }
 
 /* Footer */
@@ -115,6 +205,22 @@ body {
     }
 }
 
+@media (max-width: 1200px) {
+    .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        padding: 20px 35px;
+    }
+}
+
+@media (max-width: 900px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        padding: 20px 30px;
+    }
+}
+
 @media (max-width: 768px) {
     .navbar {
         padding: 15px 20px;
@@ -135,6 +241,11 @@ body {
         gap: 15px;
         padding: 15px 20px;
     }
+    
+    /* Hide hover preview on touch devices */
+    .hover-preview {
+        display: none !important;
+    }
 }
 
 @media (max-width: 480px) {
@@ -142,8 +253,15 @@ body {
         grid-template-columns: 1fr;
     }
     
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 20px;
+    }
+    
     .nav-links {
         gap: 20px;
         font-size: 16px;
     }
 }
+
