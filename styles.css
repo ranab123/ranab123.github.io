@@ -90,6 +90,11 @@ body {
     opacity: 0.8;
 }
 
+/* Make sig video thumbnail 20% larger */
+.image-grid img[alt="Sig App"] {
+    transform: scale(1.2);
+}
+
 /* Hover Preview */
 .hover-preview {
     position: fixed;
