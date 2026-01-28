@@ -77,6 +77,11 @@ body {
     align-items: center;
 }
 
+.image-grid a {
+    display: block;
+    width: 100%;
+}
+
 .image-grid img {
     width: 100%;
     height: auto;
@@ -86,12 +91,12 @@ body {
     transition: opacity 0.2s ease;
 }
 
-.image-grid img:hover {
+.image-grid a:hover img {
     opacity: 0.8;
 }
 
 /* Make sig video thumbnail 20% larger */
-.image-grid img[alt="Sig App"] {
+.image-grid a img[alt="Sig App"] {
     transform: scale(1.2);
 }
 
@@ -138,6 +143,16 @@ body {
     margin: 0;
 }
 
+.gallery-item > a {
+    display: block;
+    width: 100%;
+    transition: opacity 0.2s ease;
+}
+
+.gallery-item > a:hover {
+    opacity: 0.8;
+}
+
 .gallery-item img {
     width: 100%;
     max-width: 100%;
@@ -168,6 +183,30 @@ body {
     color: #000;
     text-transform: uppercase;
     line-height: 1.2;
+}
+
+.gallery-title a {
+    color: #000;
+    text-decoration: underline;
+    transition: opacity 0.2s ease;
+}
+
+.gallery-title a:hover {
+    opacity: 0.7;
+}
+
+/* Make sig video in gallery larger and centered */
+.gallery-item:has(video source[src*="sig-video"]) {
+    align-self: center;
+}
+
+.gallery-item:has(video source[src*="sig-video"]) video {
+    transform: scale(1.25);
+}
+
+/* Make sig video larger on project detail page */
+.project-frame:has(video source[src*="sig-video"]) video {
+    transform: scale(1.3);
 }
 
 .gallery-date {
@@ -267,6 +306,278 @@ body {
     .nav-links {
         gap: 20px;
         font-size: 16px;
+    }
+}
+
+/* Project Detail Page */
+.project-detail {
+    display: grid;
+    grid-template-columns: 1fr 30%;
+    gap: 20px;
+    padding: 10px 15px;
+    min-height: calc(100vh - 120px);
+    align-items: start;
+}
+
+.project-media {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: calc(100vh - 140px);
+}
+
+.project-frame {
+    position: relative;
+    width: auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+}
+
+.project-frame img,
+.project-frame video {
+    width: auto;
+    height: 100%;
+    max-width: 100%;
+    display: block;
+    object-fit: contain;
+}
+
+.project-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+    height: calc(100vh - 140px);
+    justify-content: space-between;
+    width: 100%;
+    padding-right: 30px;
+}
+
+.project-info-top {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-top: 40px;
+    max-width: 350px;
+}
+
+.project-title {
+    font-family: 'AlteHaasGroteskBold', Arial, sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin-bottom: 5px;
+}
+
+.project-title a {
+    color: #000;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.project-title a:hover {
+    opacity: 0.7;
+}
+
+.project-date {
+    font-family: 'AlteHaasGroteskBold', Arial, sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.project-tags {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.project-tag {
+    background-color: #FF0000;
+    color: #fff;
+    font-family: 'AlteHaasGroteskBold', Arial, sans-serif;
+    font-size: 14px;
+    padding: 6px 12px;
+    text-transform: uppercase;
+}
+
+.project-description {
+    font-family: 'AlteHaasGroteskBold', Arial, sans-serif;
+    font-size: 20px;
+    line-height: 1.4;
+    color: #000;
+    max-width: 350px;
+    padding-bottom: 60px;
+    text-align: justify;
+}
+
+/* Project Detail Responsive */
+@media (max-width: 1024px) {
+    .project-detail {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 20px;
+    }
+    
+    .project-media {
+        height: auto;
+        max-height: 50vh;
+    }
+    
+    .project-frame img,
+    .project-frame video {
+        height: auto;
+        max-height: 50vh;
+    }
+    
+    .project-info {
+        align-items: center;
+        text-align: center;
+        height: auto;
+    }
+    
+    .project-info-top {
+        align-items: center;
+    }
+    
+    .project-tags {
+        justify-content: center;
+    }
+    
+    .project-description {
+        text-align: center;
+        margin-top: 40px;
+    }
+    
+    .project-frame {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .project-detail {
+        padding: 15px;
+    }
+    
+    .project-title {
+        font-size: 28px;
+    }
+    
+    .project-date {
+        font-size: 18px;
+    }
+    
+    .project-description {
+        font-size: 16px;
+    }
+}
+
+/* Gallery Layout for Multiple Items */
+.project-gallery-page {
+    padding: 20px 60px 60px;
+}
+
+.project-gallery-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.project-gallery-header .project-title {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.project-gallery-header .project-date {
+    margin-bottom: 15px;
+}
+
+.project-gallery-header .project-tags {
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.project-gallery-header .project-description {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    padding-bottom: 0;
+}
+
+.invention-gallery {
+    columns: 3;
+    column-gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.invention-item {
+    break-inside: avoid;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.invention-media {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.invention-media img,
+.invention-media video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.invention-title {
+    font-family: 'AlteHaasGroteskBold', Arial, sans-serif;
+    font-size: 16px;
+    color: #000;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 12px;
+    line-height: 1.3;
+}
+
+@media (max-width: 1024px) {
+    .invention-gallery {
+        columns: 2;
+    }
+}
+
+@media (max-width: 768px) {
+    .project-gallery-page {
+        padding: 15px 20px 40px;
+    }
+    
+    .invention-gallery {
+        columns: 1;
+        column-gap: 20px;
+    }
+    
+    .invention-item {
+        margin-bottom: 25px;
+    }
+    
+    .invention-title {
+        font-size: 14px;
+    }
+    
+    .project-gallery-header .project-title {
+        font-size: 24px;
     }
 }
 

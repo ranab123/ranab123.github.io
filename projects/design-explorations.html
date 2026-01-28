@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Explorations - rana land</title>
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .project-detail-with-gallery {
+            min-height: auto;
+            padding-bottom: 40px;
+        }
+        
+        .explos-gallery-section {
+            padding: 40px 60px 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .explos-gallery {
+            columns: 3;
+            column-gap: 20px;
+        }
+        
+        .explos-item {
+            break-inside: avoid;
+            margin-bottom: 20px;
+        }
+        
+        .explos-item img,
+        .explos-item video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        @media (max-width: 1024px) {
+            .explos-gallery {
+                columns: 2;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .explos-gallery-section {
+                padding: 20px 20px 40px;
+            }
+            
+            .explos-gallery {
+                columns: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-logo">
+            <a href="../index.html">
+                <img src="../assets/images/favicon.png" alt="Logo">
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="../projects.html" class="nav-item">PROJECTS</a>
+            <a href="../about.html" class="nav-item">ABOUT</a>
+        </div>
+    </nav>
+
+    <div class="project-detail project-detail-with-gallery">
+        <div class="project-media">
+            <div class="project-frame">
+                <video autoplay loop muted playsinline>
+                    <source src="../assets/images/project-gallery/0113-transparent.webm" type="video/webm">
+                </video>
+            </div>
+        </div>
+        
+        <div class="project-info">
+            <div class="project-info-top">
+                <h1 class="project-title">DESIGN EXPLORATIONS</h1>
+                <div class="project-tags" style="margin-top: 10px;">
+                    <span class="project-tag">DESIGN</span>
+                </div>
+            </div>
+            <p class="project-description">Small design explorations here and there.</p>
+        </div>
+    </div>
+
+    <div class="explos-gallery-section">
+        <div class="explos-gallery">
+            <div class="explos-item">
+                <img src="../assets/project-images/explos/Frame 7.png" alt="Design exploration">
+            </div>
+            <div class="explos-item">
+                <img src="../assets/project-images/explos/Frame 8.png" alt="Design exploration">
+            </div>
+            <div class="explos-item">
+                <img src="../assets/project-images/explos/Frame 12.png" alt="Design exploration">
+            </div>
+            <div class="explos-item">
+                <img src="../assets/project-images/explos/Frame 15.png" alt="Design exploration">
+            </div>
+            <div class="explos-item">
+                <img src="../assets/project-images/explos/hoodietransparent.png" alt="Design exploration">
+            </div>
+            <div class="explos-item">
+                <img src="../assets/project-images/explos/Untitled design (23).png" alt="Design exploration">
+            </div>
+            <div class="explos-item">
+                <img src="../assets/project-images/explos/version 2... inspired by stefanie posavec.png" alt="Design exploration">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
